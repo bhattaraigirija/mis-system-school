@@ -1,0 +1,126 @@
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_Layout_librarian";
+
+}
+@model mis_mmc.Models.BookModel
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Add Books</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item">
+                        <a href="#">Admin</a>
+                    </li>
+                     <li class="breadcrumb-item "> Library</li>
+                    <li class="breadcrumb-item active"> Add Books</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<section class="content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-12">
+               <div class="card">
+                         <div class="card-body">
+                         <div class="card-title">Books Form</div>
+                         <hr>
+                         <form asp-action="AddBook">
+                           
+                             
+                             <div class="form-group">
+                                 <label for="input-3">Book Name</label>
+                                 <input type="text" class="form-control" id="input-3" placeholder="Enter Name" name="name" required>
+                             </div>
+                             <div class="form-group">
+                                 <label for="input-4">Author(s)</label>
+                                 <input type="text" class="form-control" id="input-4" placeholder="Enter name of author" name="author" required>
+                             </div>
+                             <div class="form-group">
+                                 <label for="input-5">Publication</label>
+                                 <input type="text" class="form-control" id="input-5" placeholder="Enter name of publication" name="publication" required>
+                             </div>
+                             <div class="form-group">
+                                 <label for="input-11">Current Stock</label>
+                                 <input type="number" class="form-control" id="input-11" placeholder="Enter stock" name="stock" required>
+                             </div>
+                             <div class="form-group">
+                                 <label for="input-6">Type</label>
+                                 <select class="form-control" id="input-6"  name="type" required list="system">
+                                     <datalist id="system">
+                                         <option value="general"  > General </option>
+                                         <option value="program"> Program Related</option>
+                                     </datalist>
+                                 </select>
+                             </div>
+                             
+                             <div class="form-group">
+                                 <label asp-for="pid" class="control-label">Program</label>
+                                 <select asp-for="pid" id="select"  class ="form-control" asp-items="ViewBag.Program" disabled="disabled"></select>
+                             </div>
+                             <div class="form-group">
+                                 <label for="input-2">Semester/year</label>
+                                 
+                                 <input type="number" class="form-control" id="input-2" placeholder="Enter semester/year" name="sem_year" required max="8" disabled="disabled" >
+                                
+                             </div>
+                             
+
+
+
+
+
+
+                             <button type="submit" class="btn btn-light px-5"> Add</button>
+                              <script type="text/javascript">
+                              
+                              document.querySelector("#input-6").addEventListener("input",function (){
+                                  if (document.getElementById("input-6").value == "general"){
+                                     
+                                      document.querySelector("#select").setAttribute("disabled","disabled");
+                                      document.querySelector("#input-2").setAttribute("disabled","disabled");
+                                      
+                                      
+                                      
+                                  }
+                                  else  {
+                                      
+                                      document.querySelector("#select").removeAttribute("disabled");
+                                      document.querySelector("#input-2").removeAttribute("disabled");
+                                 
+                                 }
+                                  })
+                              
+                              
+                          
+                                                             
+                                                              </script>
+                             
+                         </form>
+                         
+                        
+                       </div>
+                       </div>
+                    </div>
+
+                <!-- /.card -->
+
+
+                <!-- /.card-header -->
+
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+   
+
+    <!-- /.container-fluid -->
+</section>
